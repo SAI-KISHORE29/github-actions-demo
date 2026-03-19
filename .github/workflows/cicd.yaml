@@ -4,24 +4,25 @@ on:
   push:
     branches:
       - main
-steps:
-  - name: Checkout code
-    uses: actions/checkout@v6
+jobs:
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v6
 
-  - name: node setup
-    uses: actions/setup-node@v6
-    with:
-      node-version: 20
-  
-  - name: Install dependencies
-    run: npm ci
+    - name: node setup
+      uses: actions/setup-node@v6
+      with:
+        node-version: 20
+    
+    - name: Install dependencies
+      run: npm ci
 
-  - name: Build app
-    run: npm run build
-  
-  - name: Upload artifact
-    uses: actions/upload-artifact@v4
-    with:
-      name: react-app-build
-      path: ./dist
+    - name: Build app
+      run: npm run build
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: react-app-build
+        path: ./dist
     
